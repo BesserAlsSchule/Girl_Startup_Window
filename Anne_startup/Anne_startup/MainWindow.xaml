@@ -6,8 +6,7 @@
         xmlns:gif="C:\Users\annes\source\repos\Anne_startup\pusheen_sombrero_gif.gif"
         xmlns:local="clr-namespace:Anne_startup"
         mc:Ignorable="d"
-        Title="Hallo Anne!      =)" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800"
-        Icon="C:\Users\Radagast\source\repos\Girl_Startup_Window\Anne_startup\Anne_startup\pusheen_icon.ico" Background="BlueViolet">
+        Icon="/pusheen_icon.jpg" Title="Hallo Anne!      =)" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" Background="BlueViolet" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
