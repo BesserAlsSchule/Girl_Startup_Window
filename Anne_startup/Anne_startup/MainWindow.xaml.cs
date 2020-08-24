@@ -22,70 +22,60 @@ namespace Anne_startup
     /// </summary>
     public partial class MainWindow : Window
     {
-        //object sender;
-        //RoutedEventArgs e;
 
         //Verbindungsstrings für Websites
         string Asos = "https://www.asos.com/de/damen/";
         string About_you = "https://www.aboutyou.de/dein-shop";
         string Pinterest = "https://www.pinterest.de/";
         string Zooplus = "https://www.zooplus.de/";
-        string Googelinger = "https://www.google.de";
+        string Google = "https://www.google.de";
 
         //Starte Fenster
         public MainWindow()
         {
-            dispatcherTimerLabel(); //Uhr initialisierung
-            InitializeComponent();
+            dispatcherTimerLabel();     //Uhr initialisierung
+            InitializeComponent();      //konstruiere + initialisiere fenster
         }
         //Label.Content bindings?: http://www.sws.bfh.ch/~amrhein/Skripten/Info2/05.DataBinding.pdf
         //DISPATCHER TIMER https://stackoverflow.com/questions/17233651/wpf-data-binding-label-content
 
-            public void dispatcherTimerLabel()
-            {
-                DispatcherTimer timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(100);
-                timer.Tick += timer_Tick;
-                timer.Start();
-            }
-
-            public void timer_Tick(object sender, EventArgs e)
-            {
-                DispatcherTimerLabel.Content = DateTime.Now.ToLongTimeString();
-            }
-        
-        //acessor für dTimerLabel Content --> unnötig
-        private string DTimerOutput;
-
-        public string dTimerOut
+        public void dispatcherTimerLabel()
         {
-            get { return DTimerOutput; }
-            set { DTimerOutput = value; }
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
+
+        public void timer_Tick(object sender, EventArgs e)
+        {
+            DispatcherTimerLabel.Content = DateTime.Now.ToLongTimeString();
+        }
+
         //LOOP FÜR GIF
-        private void myGif_MediaEnded(object sender, RoutedEventArgs e)
+        private void myGif_MediaEnded(object sender, RoutedEventArgs e)     //gif endet event (gebunden an xaml front end)
         {
-            Pusheen_Sombrero.Position = new TimeSpan(0, 0, 10);
-            Pusheen_Sombrero.Play();
+            Pusheen_Sombrero.Position = new TimeSpan(0, 0, 10);             //wenn sombrero katze bei 10 sec -> neue zeitspanne mit 10 sec
+            Pusheen_Sombrero.Play();                                        //starte für 10 sec (loopt also)
         }
 
-        public void mySpaceGif(object sender, RoutedEventArgs e) 
+        public void mySpaceGif_MediaEnded(object sender, RoutedEventArgs e) 
         {
             spaceCat.Position = new TimeSpan(0, 0, 10);
             spaceCat.Play();
         }
         //BUTTONS
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void asos_Click(object sender, RoutedEventArgs e)     //button click eventmethode
         {
-            ProcessStartInfo psi = new ProcessStartInfo
+            ProcessStartInfo psi = new ProcessStartInfo         // constructor für prozessargumente
             {
-                FileName = Asos,
-                UseShellExecute = true
+                FileName = Asos,            //website auswählen als zu startendes ziel
+                UseShellExecute = true      //benutze interne windowsbefehl shell dafür
             };
-            Process.Start(psi);
+            Process.Start(psi);             //starte internen systemprozess (mit argument "psi")
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void about_you_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {
@@ -95,7 +85,7 @@ namespace Anne_startup
             Process.Start(psi);
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void pinterest_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {
@@ -105,7 +95,7 @@ namespace Anne_startup
             Process.Start(psi);
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void zooplus_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {
@@ -115,11 +105,11 @@ namespace Anne_startup
             Process.Start(psi);
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)
+        private void google_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo psi = new ProcessStartInfo
             {
-                FileName = Googelinger,
+                FileName = Google,
                 UseShellExecute = true
             };
             Process.Start(psi);
